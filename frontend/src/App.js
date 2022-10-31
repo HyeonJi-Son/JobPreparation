@@ -13,7 +13,9 @@ function App() {
   //모든 걸 state로 만들지 말고 필요한 것만 만들면 된다.
   //예를 들어 ReactBlog와 같은 사이트 이름 등은 대체로 변경될 일이 없으니 그냥 입력해도 OK.
   //여기에선 예시를 위해 state형식으로 입력해보았다.
-  let [글제목, b] = useState('남자 코트 추천')
+  let [글제목1, b1] = useState('남자 코트 추천')
+  let [글제목2, b2] = useState('여자 코트 추천')
+  let [글제목3, b3] = useState('아동 코트 추천')
   // 1.import{ useState }
   // 2. useState(보관할 자료)
   /*
@@ -37,7 +39,15 @@ function App() {
         <h4 style={ {color : 'red', fontSize : '16px'} }>블로그만들기</h4>
       </div>
       <div className="list">
-        <h4>{ logo }</h4> 
+        <h4>{ 글제목1 }</h4> 
+        <p>10월 31일 발행</p>
+      </div>
+      <div className="list">
+        <h4>{ 글제목2 }</h4> 
+        <p>10월 31일 발행</p>
+      </div>
+      <div className="list">
+        <h4>{ 글제목3 }</h4> 
         <p>10월 31일 발행</p>
       </div>
       <h4>
