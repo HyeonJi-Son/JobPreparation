@@ -1,3 +1,6 @@
+/* eslint-disable */
+//을 적어주면 warning뜨는 메세지 내역 삭제해줌
+
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
@@ -13,9 +16,7 @@ function App() {
   //모든 걸 state로 만들지 말고 필요한 것만 만들면 된다.
   //예를 들어 ReactBlog와 같은 사이트 이름 등은 대체로 변경될 일이 없으니 그냥 입력해도 OK.
   //여기에선 예시를 위해 state형식으로 입력해보았다.
-  let [글제목1, b1] = useState('남자 코트 추천')
-  let [글제목2, b2] = useState('여자 코트 추천')
-  let [글제목3, b3] = useState('아동 코트 추천')
+  let [글제목, b1] = useState(['남자 코트 추천', '여자 코트 추천', '아동 코트 추천'])
   // 1.import{ useState }
   // 2. useState(보관할 자료)
   /*
@@ -30,6 +31,15 @@ function App() {
   - 일반 변수는 갑자기 변경되면 html에 자동으로 적용되지 않음.
   - state를 쓰면 갑자기 변경되어도 자동으로 html이 자동 재렌더링 된다.
   */
+
+  let[따봉, 따봉변경] = useState(0);
+  //따봉변경은 state변경용 함수다. 이걸 제대로 써야 html 재랜더링도 제대로 된다.
+  function 함수(){
+    console.log(1);
+  }
+  /*function 함수명(){ > 긴 코드를 한번에 묶어줌
+
+  } */
   
 
   return ( //html 모두 return안에 짜야 함.
@@ -39,15 +49,26 @@ function App() {
         <h4 style={ {color : 'red', fontSize : '16px'} }>블로그만들기</h4>
       </div>
       <div className="list">
-        <h4>{ 글제목1 }</h4> 
+        <h4>{ 글제목[0] } <span onClick={ 함수 }>👍</span> { 따봉 } </h4>
+        {/* onClick handler
+        - 중괄호 안에 함수 이름을 넣어줘야 한다.
+        - 함수 만드는 문법을 바로 넣을 수도 있다. */ }
+    
         <p>10월 31일 발행</p>
       </div>
       <div className="list">
-        <h4>{ 글제목2 }</h4> 
+        <h4>{ 글제목[1] } <span onClick={()=>{ console.log(1)}}>👍</span> { 따봉 }</h4> 
         <p>10월 31일 발행</p>
       </div>
       <div className="list">
-        <h4>{ 글제목3 }</h4> 
+        <h4>{ 글제목[2] } <span onClick={()=>{ 따봉변경(10) }}>👍</span> { 따봉 } </h4>
+        {/* state 변경하는 법
+        - 등호로 변경금지
+        - 함수 만드는 문법을 바로 넣을 수도 있다. */ }
+        <p>10월 31일 발행</p>
+      </div>
+      <div className="list">
+        <h4>{ 글제목[2] } <span onClick={()=>{ 따봉변경(따봉+1) }}>👍</span> { 따봉 } </h4>
         <p>10월 31일 발행</p>
       </div>
       <h4>
